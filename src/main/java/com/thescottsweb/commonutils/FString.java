@@ -14,7 +14,13 @@ public class FString {
 		int matchCount = getMatchCount(message);
 
 		for (Object o : objects) {
-			message = message.replaceFirst(MATCH_REGEX, String.valueOf(o));
+			String objString = null;
+			if (o == null) {
+				objString = "(OBJECT IS NULL!)";
+			} else {
+				objString = String.valueOf(o);
+			}
+			message = message.replaceFirst(MATCH_REGEX, objString);
 		}
 
 		if (matchCount != objects.length) {
