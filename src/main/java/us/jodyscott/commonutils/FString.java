@@ -1,6 +1,11 @@
-package com.thescottsweb.commonutils;
+package us.jodyscott.commonutils;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class FString {
+
+	private static final Logger LOG = LoggerFactory.getLogger(FString.class);
 
 	private static final String MATCH_STRING = "{}";
 	private static final String MATCH_REGEX = "\\{\\}";
@@ -13,21 +18,14 @@ public class FString {
 
 		int matchCount = getMatchCount(message);
 
-		for (Object o : objects) {
-			String objString = null;
-			if (o == null) {
-				objString = "(OBJECT IS NULL!)";
-			} else {
-				objString = String.valueOf(o);
-			}
-			message = message.replaceFirst(MATCH_REGEX, objString);
+		if (matchCount != objects.length) {
+			LOG.warn(String.format("The expected number of objects is %s but the actual number is %s", objects.length,
+					matchCount));
 		}
 
-		if (matchCount != objects.length) {
-			String warning = String.format(
-					" :: ASSERTION !!! The Number of %s is %s which differs from the number of objects which is %s",
-					MATCH_STRING, matchCount, objects.length);
-			message = message + warning;
+		for (Object o : objects) {
+			String objString = String.valueOf(o);
+			message = message.replaceFirst(MATCH_REGEX, objString);
 		}
 
 		return message;
