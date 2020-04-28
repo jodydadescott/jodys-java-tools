@@ -1,4 +1,4 @@
-package us.jodyscott.commonutils;
+package com.github.jodydadescott.commonutils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
