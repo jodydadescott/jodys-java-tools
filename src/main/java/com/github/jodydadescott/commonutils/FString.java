@@ -106,7 +106,7 @@ public class FString {
 			}
 		}
 
-		return true;
+		return false;
 	}
 
 	/**
