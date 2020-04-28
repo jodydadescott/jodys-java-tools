@@ -7,7 +7,8 @@ import com.github.jodydadescott.commonutils.FString;
 public class FStringTest {
 
 	@Test
-	public void test1() {
+	public void testFormat() {
+		// Test format
 
 		assert "This is a replace1 test".equals(FString.format("This is a {} test", "replace1"));
 
@@ -20,7 +21,8 @@ public class FStringTest {
 	}
 
 	@Test
-	public void test2() {
+	public void testNotNull() {
+		// Test assertNotNull
 
 		// This should not result in an AssertionError
 		FString.assertNotNull("testobject", "not null not empty");
@@ -33,6 +35,11 @@ public class FStringTest {
 		} catch (AssertionError e) {
 
 		}
+
+	}
+
+	@Test
+	public void testNotEmpty() {
 
 		// This should not result in an AssertionError
 		FString.assertNotEmpty("testobject", "not null not empty");
@@ -54,6 +61,15 @@ public class FStringTest {
 		} catch (AssertionError e) {
 
 		}
+
+	}
+
+	@Test
+	public void testIsEmpty() {
+
+		assert FString.isEmpty(null) == true;
+		assert FString.isEmpty("") == true;
+		assert FString.isEmpty("not empty") == false;
 
 	}
 

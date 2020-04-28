@@ -85,6 +85,31 @@ public class FString {
 	}
 
 	/**
+	 * 
+	 * Test if object is null or an empty String.
+	 * 
+	 * @param object The object to be tested
+	 * @return true if object is null or empty otherwise false
+	 * 
+	 */
+	public static boolean isEmpty(Object o) {
+
+		if (o == null) {
+			return true;
+		}
+
+		if (o instanceof String) {
+			if (o.equals(EMPTY_STRING)) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	/**
 	 * Counts the occurrence of the pattern {} in a provided String
 	 * 
 	 * @param input A String with zero or more occurrences of the pattern {}
